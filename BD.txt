@@ -1,0 +1,41 @@
+-- Creación de la base de datos
+CREATE DATABASE IF NOT EXISTS servicio_medico;
+USE servicio_medico;
+
+-- Creación de la tabla de roles
+CREATE TABLE IF NOT EXISTS roles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
+-- Creación de la tabla de usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    correo VARCHAR(255) NOT NULL UNIQUE,
+    contraseña VARCHAR(255) NOT NULL,
+    telefono VARCHAR(20),
+    direccion VARCHAR(255),
+    genero ENUM('Masculino', 'Femenino', 'Otro') DEFAULT 'Otro',
+    imagen_perfil VARCHAR(255),
+    rol_id INT,
+    FOREIGN KEY (rol_id) REFERENCES roles(id)
+);
+
+-- Insertar roles predeterminados
+INSERT INTO roles (nombre) VALUES ('Usuario'), ('Administrador');
+
+-- Ejemplo de inserción de un usuario
+INSERT INTO usuarios (nombre, correo, contraseña, telefono, direccion, genero, imagen_perfil, rol_id)
+VALUES ('Juan Pérez', 'juan@correo.com', 'password123', '1234567890', 'Calle Falsa 123', 'Masculino', 'imagen.jpg', 1);
+
+-- Configuración para application.properties en Spring Boot
+/*
+spring.datasource.url=jdbc:mysql://localhost:3306/servicio_medico
+spring.datasource.username=tu_usuario
+spring.datasource.password=tu_contraseña
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+*/

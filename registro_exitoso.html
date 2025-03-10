@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Exitoso</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgba(50,101,149,0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://img.freepik.com/foto-gratis/conjunto-iconos-tecnologia-medica-salud-bienestar_53876-104940.jpg?semt=ais_hybrid');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-color: rgba(245,244,248,1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(245,244,248,1);
+            color: rgba(50,101,149,1);
+            text-align: center;
+            width: 350px;
+            max-width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: rgba(50,101,149,1);
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        a {
+            color: rgba(50,101,149,1);
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid rgba(50,101,149,1);
+            margin-top: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: rgba(50,101,149,1);
+            color: white;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="container">
+        <h1>Registro exitoso</h1>
+        <p>¡Te has registrado correctamente! Aquí están tus datos:</p>
+        <p><strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${usuario.email}"></span></p>
+        <a href="/login">Ir a login</a>
+    </div>
+</body>
+</html>
