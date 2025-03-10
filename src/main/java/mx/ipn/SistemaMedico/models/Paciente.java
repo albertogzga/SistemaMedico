@@ -3,7 +3,7 @@ package mx.ipn.SistemaMedico.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pacientes")
+@Table(name = "usuarios")
 public class Paciente {
 
     @Id
@@ -16,17 +16,23 @@ public class Paciente {
     @Column(name = "correo", nullable = false, unique = true)
     private String correo;
 
+    @Column(name = "contraseña", nullable = false)
+    private String contraseña;
+
     @Column(name = "telefono")
     private String telefono;
 
     @Column(name = "direccion")
     private String direccion;
 
-    @Column(name = "genero")
+    @Column(name = "genero", columnDefinition = "ENUM('Masculino', 'Femenino', 'Otro') DEFAULT 'Otro'")
     private String genero;
 
-    @Column(name = "imagenPerfil")
+    @Column(name = "imagen_perfil")
     private String imagenPerfil;
+
+    @Column(name = "rol_id")
+    private Integer rolId;
 
     public Paciente() {}
 
@@ -54,6 +60,14 @@ public class Paciente {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public String getTelefono() {
@@ -86,5 +100,13 @@ public class Paciente {
 
     public void setImagenPerfil(String imagenPerfil) {
         this.imagenPerfil = imagenPerfil;
+    }
+
+    public Integer getRolId() {
+        return rolId;
+    }
+
+    public void setRolId(Integer rolId) {
+        this.rolId = rolId;
     }
 }
