@@ -1,2 +1,2 @@
 # SistemMedico
-Sistema medico relizado en el semetre 25/2
+Sistema medico realizado en el semestre 25/2
